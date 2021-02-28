@@ -1,0 +1,105 @@
+var data = datasources["temp"]["m2m:cin"]["con"]["weight"];
+
+if(localStorage.old != data)
+return `
+<canvas id="myChart" width="500" height="500"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+    var time = document.getElementsByClassName("tw-value")[0].textContent;
+
+    var weight = localStorage.weight;
+    if(isNaN(weight)) {
+        weight = 0;
+	}
+    else {
+        weight = Number(weight);
+	}
+
+    var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var dayOfWeek = week[new Date(time.split(" ")[0]).getDay()];
+	console.log("dayOfWeek:" + dayOfWeek);
+
+    var day_weight = localStorage.day_weight;
+    if(isNaN(day_weight)) {
+        day_weight = new Array(7);
+        localStorage.day_weight = day_weight;
+    }
+
+    var data = document.getElementsByClassName("tw-value")[1].textContent;
+    data = Number(data);
+
+    console.log("weight>>"+weight);
+    console.log("day>>"+day);
+    console.log("data>>"+data);
+    console.log(localStorage.old);
+
+    if(localStorage.old != data) {
+        if(localStorage.old - data < 0) {
+       		localStorage.old = data;
+        }
+        else {
+            switch(dayOfWeek) {
+                case "Fri":
+                    var i = 5;
+                    day_weight[i] = 0;
+                    console.log(day_weight[i]);
+                    day_weight[i] = weight + (localStorage.old - data);
+                    localStorage.weight = day_weight[i];
+                    console.log(day_weight[i]);
+                    console.log(localStorage.weight);
+                    break;
+            }
+        }
+        localStorage.old = data;
+        localStorage.day_weight = day_weight;
+    }
+    else {
+        switch(dayOfWeek) {
+			case "Fri":
+				day_weight[5] = weight;
+        }
+    }
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+            datasets: [{
+                label: 'Weight',
+                data: day_weight,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+</script>
+`;

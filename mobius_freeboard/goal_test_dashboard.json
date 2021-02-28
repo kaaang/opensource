@@ -1,0 +1,116 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 9
+			},
+			"col": {
+				"2": 1,
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "LC_time",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"time\"]",
+						"animate": true
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "LC_weight",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"weight\"]",
+						"animate": true,
+						"units": "ml"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 2,
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Goal",
+						"value": "datasources[\"goal\"][\"m2m:cin\"][\"con\"][\"progress\"]",
+						"units": "percent",
+						"min_value": 0,
+						"max_value": 100
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "temp",
+			"type": "JSON",
+			"settings": {
+				"url": "http://203.250.148.89:7579/Mobius/Team_4/LC/la",
+				"use_thingproxy": true,
+				"refresh": 2,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "Accept",
+						"value": "application/json"
+					},
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "X-M2M-Origin",
+						"value": "SOrigin"
+					}
+				],
+				"name": "temp"
+			}
+		},
+		{
+			"name": "goal",
+			"type": "JSON",
+			"settings": {
+				"url": "http://203.250.148.89:7579/Mobius/Team_4/Goal/la",
+				"use_thingproxy": true,
+				"refresh": 5,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "Accept",
+						"value": "application/json"
+					},
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "X-M2M-Origin",
+						"value": "SOrigin"
+					}
+				]
+			}
+		}
+	],
+	"columns": 3
+}

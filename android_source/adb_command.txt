@@ -1,0 +1,1 @@
+adb logcat -d -v brief output -s *:D | Select-String "FCM Token" > D:\logcat.txt

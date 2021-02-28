@@ -1,0 +1,164 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 2
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "var data = datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"weight\"];\nvar list = document.getElementById(\"test1\");\n\tlist.innerHTML = data;\n    var var1 = 70;\n    document.getElementById(\"test11\").style = \"width:\" + var1 +\"%\";\nreturn `\n<html lang=\"en\">\n <head>  \n    <meta charset=\"UTF-8\">\n    <style>\n        /* UI Object 가로 */\n        .h_graph ul{margin:0 50px 0 50px;padding:1px 0 0 0;border:1px solid #ddd;border-top:0;border-right:0;font-size:11px;font-family:Tahoma, Geneva, sans-serif;list-style:none}\n        .h_graph li{position:relative;margin:10px 0;vertical-align:top;white-space:nowrap}\n        .h_graph .g_term{position:absolute;top:0;left:-50px;width:40px;font-weight:bold;color:#767676;line-height:20px;text-align:right}\n        .h_graph .g_bar{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#e9e9e9}\n        .h_graph .g_bar span{position:absolute;top:0;right:-50px;width:40px;color:#767676;line-height:20px}\n        /* //UI Object */\n\n        /* UI Object 세로 */\n        .ratio{padding-top:20px}\n        .ratio li{float:left;position:relative;width:100px;height:300px;margin-right:10px;list-style:none}\n        .ratio div{position:absolute;left:0;bottom:0;width:100%;background:url(img/bg_gage2.gif) repeat;font-size:0}\n        .ratio em{position:absolute;top:-20px;width:100%;font-size:12px;font-weight:bold;text-align:center}\n        /* //UI Object */\n    </style>\n</head>\n <body>\n    <!-- UI Object 가로 -->\n    <div class=\"h_graph\">\n        <ul>\n            <li><span class=\"g_term\">SUN</span><span id=\"test11\" class=\"g_bar\" style=\"width:0%\"><span id=`+\"test1\"`>0%</span></span></li>\n            <li><span class=\"g_term\">MON</span><span class=\"g_bar\" style=\"width:20%\"><span id=\"test2\">20%</span></span></li>\n            <li><span class=\"g_term\">TUE</span><span class=\"g_bar\" style=\"width:30%\"><span>30%</span></span></li>\n            <li><span class=\"g_term\">WED</span><span class=\"g_bar\" style=\"width:40%\"><span>40%</span></span></li>\n            <li><span class=\"g_term\">THU</span><span class=\"g_bar\" style=\"width:50%\"><span>50%</span></span></li>\n            <li><span class=\"g_term\">FRI</span><span class=\"g_bar\" style=\"width:60%\"><span>60%</span></span></li>\n            <li><span class=\"g_term\">SAT</span><span class=\"g_bar\" style=\"width:100%\"><span>100%</span></span></li>\n        </ul>\n    </div>\n    <!-- //UI Object -->\n                 <script>\n                \tvar data1 = datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"weight\"]; \n                \tvar list = document.getElementById(\"test1\");\n                             list.innerHTML = data;\n                             var var1 = 70;\n                             document.getElementById(\"test11\").style = \"width:\" + var1 +\"%\";\n                           \n                             \n                </script>\n </body>\n</html>\n`;\n",
+						"height": 8
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 19,
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "var LVL = datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"weight\"];\nreturn LVL;\n",
+						"height": 4
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 19,
+				"3": 11,
+				"4": 1
+			},
+			"col": {
+				"2": 2,
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Goal",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"progress\"]",
+						"units": "percent",
+						"min_value": 0,
+						"max_value": 100
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 23,
+				"3": 19,
+				"4": 9
+			},
+			"col": {
+				"2": 1,
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "LC_time",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"time\"]",
+						"animate": true
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "LC_weight",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"weight\"]",
+						"animate": true,
+						"units": "ml"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "temp",
+			"type": "JSON",
+			"settings": {
+				"url": "http://203.250.148.89:7579/Mobius/Team_4/LC/la",
+				"use_thingproxy": true,
+				"refresh": 2,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "Accept",
+						"value": "application/json"
+					},
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "X-M2M-Origin",
+						"value": "SOrigin"
+					}
+				],
+				"name": "temp"
+			}
+		},
+		{
+			"name": "goal",
+			"type": "JSON",
+			"settings": {
+				"url": "http://203.250.148.89:7579/Mobius/Team_4/Goal/la",
+				"use_thingproxy": true,
+				"refresh": 5,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "Accept",
+						"value": "application/json"
+					},
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "X-M2M-Origin",
+						"value": "SOrigin"
+					}
+				]
+			}
+		}
+	],
+	"columns": 3
+}

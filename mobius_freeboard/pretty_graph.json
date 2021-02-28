@@ -1,0 +1,110 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "LC_time",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"time\"]",
+						"animate": true
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "LC_weight",
+						"size": "regular",
+						"value": "datasources[\"temp\"][\"m2m:cin\"][\"con\"][\"weight\"]\n",
+						"animate": true,
+						"units": "ml"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 2,
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<canvas id=\"myChart\" width=\"400\" height=\"400\"></canvas>\n<script src=\"https://cdn.jsdelivr.net/npm/chart.js@2.8.0\"></script>\n<script>\nvar ctx = document.getElementById('myChart').getContext('2d');\nvar myChart = new Chart(ctx, {\n    type: 'bar',\n    data: {\n        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],\n        datasets: [{\n            label: '# of Votes',\n            data: [12, 19, 3, 5, 2, 3],\n            backgroundColor: [\n                'rgba(255, 99, 132, 0.2)',\n                'rgba(54, 162, 235, 0.2)',\n                'rgba(255, 206, 86, 0.2)',\n                'rgba(75, 192, 192, 0.2)',\n                'rgba(153, 102, 255, 0.2)',\n                'rgba(255, 159, 64, 0.2)'\n            ],\n            borderColor: [\n                'rgba(255, 99, 132, 1)',\n                'rgba(54, 162, 235, 1)',\n                'rgba(255, 206, 86, 1)',\n                'rgba(75, 192, 192, 1)',\n                'rgba(153, 102, 255, 1)',\n                'rgba(255, 159, 64, 1)'\n            ],\n            borderWidth: 1\n        }]\n    },\n    options: {\n        scales: {\n            yAxes: [{\n                ticks: {\n                    beginAtZero: true\n                }\n            }]\n        }\n    }\n});\n</script>",
+						"height": 5
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 7,
+				"3": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<canvas id=\"chartjs-1\" class=\"chartjs\" width=\"538\" height=\"269\" style=\"display: block; width: 538px; height: 269px;\"></canvas>\n<script src=\"https://cdn.jsdelivr.net/npm/chart.js@2.8.0\"></script><script>new Chart(document.getElementById(\"chartjs-1\"),{\"type\":\"bar\",\"data\":{\"labels\":[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"],\"datasets\":[{\"label\":\"My First Dataset\",\"data\":[65,59,80,81,56,55,40],\"fill\":false,\"backgroundColor\":[\"rgba(255, 99, 132, 0.2)\",\"rgba(255, 159, 64, 0.2)\",\"rgba(255, 205, 86, 0.2)\",\"rgba(75, 192, 192, 0.2)\",\"rgba(54, 162, 235, 0.2)\",\"rgba(153, 102, 255, 0.2)\",\"rgba(201, 203, 207, 0.2)\"],\"borderColor\":[\"rgb(255, 99, 132)\",\"rgb(255, 159, 64)\",\"rgb(255, 205, 86)\",\"rgb(75, 192, 192)\",\"rgb(54, 162, 235)\",\"rgb(153, 102, 255)\",\"rgb(201, 203, 207)\"],\"borderWidth\":1}]},\"options\":{\"scales\":{\"yAxes\":[{\"ticks\":{\"beginAtZero\":true}}]}}});</script>",
+						"height": 4
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "temp",
+			"type": "JSON",
+			"settings": {
+				"url": "http://203.250.148.89:7579/Mobius/Team_4/LC/la",
+				"use_thingproxy": true,
+				"refresh": 2,
+				"method": "GET",
+				"headers": [
+					{
+						"name": "Accept",
+						"value": "application/json"
+					},
+					{
+						"name": "X-M2M-RI",
+						"value": "12345"
+					},
+					{
+						"name": "X-M2M-Origin",
+						"value": "SOrigin"
+					}
+				],
+				"name": "temp"
+			}
+		}
+	],
+	"columns": 3
+}
